@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Stok Bahan Ajar</title>
+
+  <script>
+    (function () {
+      const mode = localStorage.getItem("mode");
+      if (mode === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <button class="back-btn" onclick="goBack()" title="Kembali">
+    <svg xmlns="http://www.w3.org/2000/svg" class="back-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <div class="dashboard">
+    <div class="header-bar">
+      <h2>Stok Bahan Ajar</h2>
+
+      <button onclick="tambahData()" class="btn-tambah">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ikon-tambah">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+        Tambah Data
+      </button>
+    </div>
+
+    <div id="listBuku"></div>
+  </div>
+
+  <div id="modalForm" class="modal">
+    <div class="modal-content">
+      <h3>Tambah Buku</h3>
+
+      <input type="text" id="kodeLokasi" placeholder="Kode Lokasi">
+      <input type="text" id="kodeBarang" placeholder="Kode Barang">
+      <input type="text" id="jenisBarang" placeholder="Jenis Barang">  
+      <input type="text" id="namaBarang" placeholder="Nama Barang">
+      <input type="text" id="edisi" placeholder="Edisi">
+      <input type="number" id="stok" placeholder="Stok">
+      <input type="file" id="cover" accept="image/*">
+
+      <button onclick="simpanData()">Simpan</button>
+      <button class="btn-secondary" onclick="tutupModal()">Batal</button>
+    </div>
+  </div>
+
+  <div id="modalHapus" class="modal">
+    <div class="modal-content confirm-modal">
+      <h3>Hapus Data Buku?</h3>
+
+      <p class="modal-text">
+        Data buku yang dipilih akan dihapus dari daftar stok.
+      </p>
+
+      <div class="confirm-actions">
+        <button class="btn-danger" onclick="hapusBuku()">Ya, Hapus</button>
+        <button class="btn-secondary" onclick="tutupModalHapus()">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    cekLogin();
+    loadMode();
+    tampilkanBuku();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - SITTA</title>
+
+  <script>
+    (function () {
+      const mode = localStorage.getItem("mode");
+      if (mode === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <button id="modeBtn" class="mode-toggle" onclick="toggleMode()" aria-label="Toggle Mode">
+  <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+  <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+</button>
+
+  <div class="container">
+    <div class="card">
+    <img src="assets/logo-ut.png" class="logo-ut" alt="Logo Universitas Terbuka">
+      <p class="subtitle">Selamat Datang</p>
+      <h2 class="login-title">SITTA-UT</h2>
+
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+    <div class="forgot-wrapper">
+      <p class="link forgot" onclick="openForgotModal()">Lupa password?</p>
+    </div>
+
+      <button onclick="login()">Masuk</button>
+
+      <p class="link" onclick="openRegisterModal()">Belum punya akun?</p>
+
+    </div>
+  </div>
+<div id="forgotModal" class="modal">
+  <div class="modal-content">
+    <h3>Verifikasi Email</h3>
+    <p class="modal-text">Masukkan email yang terdaftar untuk melakukan verifikasi.</p>
+
+    <input type="email" id="forgotEmail" placeholder="Masukkan email">
+
+    <button onclick="verifyEmail()">Verifikasi</button>
+    <button class="btn-secondary" onclick="closeForgotModal()">Batal</button>
+  </div>
+</div>
+
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <h3>Pendaftaran Akun</h3>
+
+    <input type="text" id="registerName" placeholder="Nama lengkap">
+    <input type="email" id="registerEmail" placeholder="Email">
+    <input type="password" id="registerPassword" placeholder="Password">
+
+    <button onclick="registerAccount()">Daftar</button>
+    <button class="btn-secondary" onclick="closeRegisterModal()">Batal</button>
+  </div>
+</div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script>loadMode();</script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

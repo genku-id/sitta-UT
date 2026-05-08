@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Histori Transaksi - SITTA</title>
+
+    <script>
+    (function () {
+      const mode = localStorage.getItem("mode");
+      if (mode === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <button class="back-btn" onclick="goBack()" title="Kembali">
+  <svg xmlns="http://www.w3.org/2000/svg" class="back-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+  </svg>
+</button>
+
+    <div class="dashboard">
+  <h2>Histori Transaksi</h2>
+
+  <div id="listHistori"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    cekLogin();
+    tampilHistori();
+  </script>
+<script>
+  loadMode();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
